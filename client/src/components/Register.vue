@@ -1,34 +1,76 @@
 <template>
-  <div>
-    <h1>Register</h1>
-    <input type="email" name="email" placeholder="Email" v-model="email">
-    <input type="password" name="password" placeholder="Password" v-model="password">
-    <button @click="register">Register</button>
-  </div>
+  <v-container>
+    <v-layout column>
+      <v-flex xs6>
+        <div class="white elevation-2">
+          <v-toolbar flat dense class="cyan" dark>
+            <v-toolbar-title>Register</v-toolbar-title>
+          </v-toolbar>
+          <div class="px-4 py-2 mt-4">
+
+            <v-text-field
+              label="Regular"
+              placeholder="Placeholder"
+            ></v-text-field>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              v-model="email"
+              class="elevation-6 w-100 my-2 pa-2"
+            />
+            <br>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              v-model="password"
+              class="elevation-6 my-2 pa-2"
+            />
+            <br>
+            <div class="error white--text py-4 mt-4 mb-2" v-if="error" v-html="error"></div>
+            <v-btn class="cyan white--text my-4" @click="register">Register</v-btn>
+          </div>
+        </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-  import AuthenticationService from '../services/AuthenticationService';
+  import AuthenticationService from '@/services/AuthenticationService';
 
   export default {
     name: 'Register',
     data() {
       return {
         email: '',
-        password: ''
+        password: '',
+        error: null
       }
     },
     methods: {
       async register() {
-        await AuthenticationService.register({
-          email: this.email,
-          password: this.password
-        })
+        this.error = null;
+        try {
+          await AuthenticationService.register({
+            email: this.email,
+            password: this.password
+          });
+        }
+        catch ( error ) {
+          this.error = error.response.data.error
+        }
       }
     }
   }
 </script>
 
 <style scoped>
+
+  input {
+    width: 100%;
+    max-width: 300px;
+  }
 
 </style>
