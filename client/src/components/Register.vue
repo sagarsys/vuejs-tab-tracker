@@ -6,27 +6,22 @@
           <v-toolbar flat dense class="cyan" dark>
             <v-toolbar-title>Register</v-toolbar-title>
           </v-toolbar>
-          <div class="px-4 py-2 mt-4">
 
+          <div class="px-4 py-2 mt-4">
             <v-text-field
-              label="Regular"
-              placeholder="Placeholder"
-            ></v-text-field>
-            <input
               type="email"
-              name="email"
-              placeholder="Email"
               v-model="email"
-              class="elevation-6 w-100 my-2 pa-2"
-            />
-            <br>
-            <input
+              label="Email"
+              placeholder="Email"
+              class="my-2 pa-2"
+            ></v-text-field>
+            <v-text-field
               type="password"
-              name="password"
-              placeholder="Password"
               v-model="password"
-              class="elevation-6 my-2 pa-2"
-            />
+              label="Password"
+              placeholder="Password"
+              class="my-2 pa-2"
+            ></v-text-field>
             <br>
             <div class="error white--text py-4 mt-4 mb-2" v-if="error" v-html="error"></div>
             <v-btn class="cyan white--text my-4" @click="register">Register</v-btn>
