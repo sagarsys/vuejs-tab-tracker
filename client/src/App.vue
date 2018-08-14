@@ -1,12 +1,25 @@
 <template>
   <v-app id="app">
-    <router-view/>
+    <main>
+      <v-container fluid>
+        <v-content app>
+          <app-header />
+          <router-view/>
+        </v-content>
+      </v-container>
+    </main>
   </v-app>
 </template>
 
 <script>
+import AppHeader from '@/components/Header.vue';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: { AppHeader },
+  comments: {
+    AppHeader
+  }
 }
 </script>
 
