@@ -8,7 +8,7 @@
         <!--<v-btn flat>Browse</v-btn>-->
       <!--</v-toolbar-items>-->
       <v-spacer></v-spacer>
-      <v-toolbar-items>
+      <v-toolbar-items v-if="!$store.state.isUserLoggedIn">
         <v-btn flat @click="navigateTo({name: 'login'})">Sign In</v-btn>
         <v-btn flat @click="navigateTo({name: 'register'})">Sign Up</v-btn>
       </v-toolbar-items>
