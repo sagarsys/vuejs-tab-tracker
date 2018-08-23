@@ -2,12 +2,7 @@
   <v-container>
     <v-layout row>
       <v-flex md8 lg6 offset-md2 offset-lg3>
-        <div class="white elevation-2">
-          <v-toolbar flat dense class="cyan" dark>
-            <v-toolbar-title>Sign In</v-toolbar-title>
-          </v-toolbar>
-
-          <div class="px-4 py-2 mt-4">
+        <panel title="Login">
             <v-text-field
               type="email"
               v-model="email"
@@ -24,8 +19,7 @@
             ></v-text-field>
             <div class="error white--text py-4 mt-4 mb-2" v-if="error" v-html="error"></div>
             <v-btn dark class="cyan my-4" @click="login">Login</v-btn>
-          </div>
-        </div>
+        </panel>
       </v-flex>
     </v-layout>
   </v-container>
@@ -33,9 +27,13 @@
 
 <script>
   import AuthenticationService from '@/services/AuthenticationService'
+  import Panel from '@/components/Panel'
 
   export default {
     name: 'Login',
+    components: {
+      Panel
+    },
     data() {
       return {
         email: '',
